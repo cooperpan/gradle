@@ -12,6 +12,11 @@ RUN set -o errexit -o nounset \
 		bash \
 		libstdc++ \
 	\
+	&& echo "Installing curl" \
+	&& apk add --update \
+		curl \
+	&& rm -rf /var/cache/apk/* \
+	\
 	&& echo "Installing build dependencies" \
 	&& apk add --no-cache --virtual .build-deps \
 		ca-certificates \
@@ -46,4 +51,6 @@ WORKDIR /home/gradle
 
 RUN set -o errexit -o nounset \
 	&& echo "Testing Gradle installation" \
-	&& gradle --version
+	&& gradle --version \
+	&& curl https://raw.githubusercontent.com/cooperpan/gradle/master/springboot_.buildscript_gradle > build.gradle \
+	&& gradle dependencies
