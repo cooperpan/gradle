@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jdk-alpine
 
 CMD ["gradle"]
 
@@ -48,6 +48,8 @@ RUN set -o errexit -o nounset \
 USER gradle
 VOLUME "/home/gradle/.gradle"
 WORKDIR /home/gradle
+
+ENV GRADLE_USER_HOME /home/gradle
 
 RUN set -o errexit -o nounset \
 	&& echo "Testing Gradle installation" \
