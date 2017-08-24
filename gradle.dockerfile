@@ -55,4 +55,4 @@ RUN set -o errexit -o nounset \
 	&& echo "Testing Gradle installation" \
 	&& gradle --version \
 	&& curl https://raw.githubusercontent.com/cooperpan/gradle/master/springboot_.buildscript_gradle > build.gradle \
-	&& gradle dependencies
+	&& gradle build -x startScripts -x bootRepackage
