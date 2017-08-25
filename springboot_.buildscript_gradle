@@ -57,6 +57,14 @@ dependencies {
             'org.apache.httpcomponents:fluent-hc:4.5.3',
             'commons-io:commons-io:2.5'
             )
+    compile(
+            // logback
+            'ch.qos.logback:logback-core:1.2.1',
+            'ch.qos.logback:logback-classic:1.2.1',
+
+            // Apache Commons
+            'commons-codec:commons-codec:1.10',
+        )
 
     // Spring Boot
     compile('org.springframework.cloud:spring-cloud-starter-config:1.3+')
