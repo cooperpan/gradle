@@ -35,7 +35,7 @@ apply plugin: 'application'
 dependencyManagement {
      imports {
           mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR7"   
-          mavenBom 'org.springframework.cloud:spring-cloud-bus:1.3.2.BUILD-SNAPSHOT'
+          mavenBom 'org.springframework.cloud:spring-cloud-bus:1.3.1.RELEASE'
      }
 }
 
@@ -48,7 +48,7 @@ dependencies {
 
     // shuame-cloud 依赖
     compile('org.springframework.cloud:spring-cloud-config-server:1.3.2.RELEASE')
-    compile ('org.springframework.cloud:spring-cloud-starter-bus-amqp:1.3.1.RELEASE')
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp:1.3.1.RELEASE')
 
     // common 库依赖
     compile (
@@ -59,7 +59,7 @@ dependencies {
             )
 
     // Spring Boot
-    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.cloud:spring-cloud-starter-config:1.3+')
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // compile("org.springframework.boot:spring-boot-admin-starter-client")
