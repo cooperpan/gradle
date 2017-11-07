@@ -1,0 +1,10 @@
+path:
+  logs: /data/elasticsearch/log
+  data: /data/elasticsearch/data
+
+cluster.name: elasticsearch_test
+node.name: elasticsearch_test
+bootstrap.memory_lock: true
+network.host: elasticsearch
+xpack.security.enabled: false
+xpack.monitoring.enabled: false
