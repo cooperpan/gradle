@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url "http://nexus.xgeeklab.com/nexus/content/repositories/central/" }
+        maven { url "http://nexus.gz.1251001058.clb.myqcloud.com/nexus/content/groups/public/" }
         //mavenCentral()
         //maven { url "https://plugins.gradle.org/m2/" }
     }
@@ -14,7 +14,7 @@ buildscript {
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-	maven { url "http://nexus.xgeeklab.com/nexus/content/repositories/central/" }
+	maven { url "http://nexus.gz.1251001058.clb.myqcloud.com/nexus/content/groups/public/" }
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     // jcenter()
@@ -91,7 +91,6 @@ dependencies {
     
     // https://mvnrepository.com/artifact/org.aspectj/aspectjrt
 	compile("org.aspectj:aspectjrt:1.8.9")
-    
 
     // Java JWT
     compile("io.jsonwebtoken:jjwt:0.7.0")
@@ -108,6 +107,20 @@ dependencies {
 
     // 腾讯云对象存储
     compile('com.qcloud:cos_api:4.4')
+
+    // 小米 推送
+    compile 'com.xiaomi.miliao:xmpush-server-api:2.2.18'
+
+    // ELK
+    compile 'net.logstash.logback:logstash-logback-encoder:4.11+'
+
+    // STOMP BRAOKE RELAY
+    compile 'io.projectreactor:reactor-core'
+    compile 'io.projectreactor:reactor-net'
+    
+    // Apple APNS 
+    // https://mvnrepository.com/artifact/com.notnoop.apns/apns
+    compile 'com.notnoop.apns:apns:1.0.0.Beta6'
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation('com.google.guava:guava:20.0')
