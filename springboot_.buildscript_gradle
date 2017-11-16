@@ -1,29 +1,24 @@
 buildscript {
+    ext {
+        springBootVersion = '1.5.6.RELEASE'
+        springDependencyVersion = '1.0.3.RELEASE'
+    }
     repositories {
         maven { url "http://nexus.gz.1251001058.clb.myqcloud.com/nexus/content/groups/public/" }
-        //mavenCentral()
-        //maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
-        classpath 'io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:${springDependencyVersion}"
         classpath 'com.bmuschko:gradle-cargo-plugin:2.2.2'
-        classpath('se.transmode.gradle:gradle-docker:1.2')
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
-// In this section you declare where to find the dependencies of your project
 repositories {
-	maven { url "http://nexus.gz.1251001058.clb.myqcloud.com/nexus/content/groups/public/" }
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    // jcenter()
-    //maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-    //mavenCentral()
+    maven { url "http://nexus.gz.1251001058.clb.myqcloud.com/nexus/content/groups/public/" }
 }
 
 apply plugin: 'java'
-// apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
@@ -34,8 +29,8 @@ apply plugin: 'application'
 
 dependencyManagement {
      imports {
-          mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR7"   
-          mavenBom 'org.springframework.cloud:spring-cloud-bus:1.3.1.RELEASE'
+          //mavenBom 'org.springframework.cloud:spring-cloud-bus:1.3.1.RELEASE'
+          mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR2'
      }
 }
 
@@ -47,8 +42,8 @@ configurations { all*.exclude module: 'slf4j-log4j12' }
 dependencies {
 
     // shuame-cloud 依赖
-    compile('org.springframework.cloud:spring-cloud-config-server:1.3.2.RELEASE')
-    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp:1.3.1.RELEASE')
+    compile 'org.springframework.cloud:spring-cloud-starter-config'
+    compile 'org.springframework.cloud:spring-cloud-starter-bus-amqp:1.3.1.RELEASE'
 
     // common 库依赖
     compile (
