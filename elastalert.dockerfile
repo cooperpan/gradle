@@ -1,8 +1,4 @@
-# Elastalert Docker image running on Alpine Linux.
-# Build image with: docker build -t ivankrizsan/elastalert:latest .
-
-FROM alpine
-
+FROM openjdk:8-jdk-alpine
 LABEL maintainer="Ivan Krizsan, https://github.com/krizsan"
 
 # Set this environment variable to True to set timezone on container start.
@@ -44,7 +40,8 @@ RUN apk update && \
     wget -O elastalert.zip "${ELASTALERT_URL}" && \
     unzip elastalert.zip && \
     rm elastalert.zip && \
-    mv e* "${ELASTALERT_HOME}"
+    mv e* "${ELASTALERT_HOME}" && \
+    apk add --update curl
 
 WORKDIR "${ELASTALERT_HOME}"
 
@@ -72,7 +69,8 @@ RUN python setup.py install && \
     rm -rf /var/cache/apk/*
 
 # Copy the script used to launch the Elastalert when a container is started.
-COPY ./start-elastalert.sh /opt/
+RUN curl https://raw.githubusercontent.com/krizsan/elastalert-docker/master/start-elastalert.sh > /opt/start-elastalert.sh
+
 # Make the start-script executable.
 RUN chmod +x /opt/start-elastalert.sh
 
