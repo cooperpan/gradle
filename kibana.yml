@@ -4,3 +4,4 @@ elasticsearch.username: elastic
 elasticsearch.password: bottle,
 xpack.monitoring.ui.container.elasticsearch.enabled: false
 xpack.security.enabled: false
+elastalert.serverHost: elastalert-prod
