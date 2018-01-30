@@ -1,5 +1,5 @@
 FROM docker.elastic.co/kibana/kibana:5.6.4
 USER root
-RUN curl https://raw.githubusercontent.com/cooperpan/gradle/master/kibana.yml > /usr/share/kibana/config/kibana.yml
-RUN chown kibana:kibana config/kibana.yml
+RUN ./bin/kibana-plugin install https://git.bitsensor.io/front-end/elastalert-kibana-plugin/builds/artifacts/kibana5/raw/artifact/elastalert-5.6.4-latest.zip?job=build
+
 USER kibana
