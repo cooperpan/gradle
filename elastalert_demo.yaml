@@ -1,0 +1,26 @@
+# From example_rules/example_frequency.yaml
+es_host: elasticsearch
+es_port: 9200
+name: 登录频率超出限制
+type: frequency
+index: wehere-*
+num_events: 100
+timeframe:
+    hours: 1
+filter:
+- term:
+    logger_name.keyword: "com.shuame.zheli.push.XiaomiService"
+alert:
+- "email"
+- "command"
+email:
+- "cooperpan@shuame.com"
+- "navyli@shuame.com"
+smtp_host: "smtp.exmail.qq.com"
+smtp_port: 465
+smtp_ssl: true
+from_addr: "wehere-alert@shuame.com"
+smtp_auth_file: '/opt/data/smtp_auth_file.yaml'
+
+new_style_string_format: true
+command: ["/usr/bin/curl", "-o", "/opt/data/curl_ret.log", "https://pushbear.ftqq.com/sub?sendkey=2355-682cb0c495b0902504ab95ef34c65e25&desp=登录次数%20{match[num_hits]}%0A%0A请在邮件中查看详情&text=登录频率超出限制"]
