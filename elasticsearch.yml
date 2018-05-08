@@ -2,8 +2,8 @@ path:
   logs: /data/elasticsearch/log
   data: /data/elasticsearch/data
 
-cluster.name: elasticsearch_test
-node.name: elasticsearch_test
+cluster.name: elasticsearch
+node.name: elasticsearch1
 network.host: 0.0.0.0
 discovery.zen.minimum_master_nodes: 1
 
