@@ -1,0 +1,54 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+//        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'daxi-youyu-api'
+    version = '0.1.0'
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url "https://repo.spring.io/milestone" }
+    mavenCentral()
+//    jcenter()
+}
+
+ext {
+    set('springCloudVersion', 'Greenwich.RC2')
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'com.alibaba:fastjson:1.2.54'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    compileOnly('org.projectlombok:lombok:1.16.20')
+    implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
+//    testCompile("junit:junit")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
