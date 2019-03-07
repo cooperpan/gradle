@@ -1,0 +1,75 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.1.RELEASE'
+	}
+	repositories {
+//		mavenCentral()
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//		jcenter()
+		maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'club.xitech'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+//	mavenCentral()
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//	jcenter()
+	maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+}
+
+
+dependencies {
+	// Modules
+	implementation project(':commons-java')
+
+	// Spring Boot Framework
+	implementation('org.springframework.boot:spring-boot-starter-actuator')
+	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	implementation('org.springframework.boot:spring-boot-starter-data-redis-reactive')
+	implementation('org.springframework.boot:spring-boot-starter-webflux')
+
+	// Apache HTTP Component
+	implementation('org.apache.httpcomponents:fluent-hc:4.5.5')
+
+    // Lombok 简化 POJO
+	compileOnly('org.projectlombok:lombok:1.16.20')
+
+	// https://mvnrepository.com/artifact/net.sf.json-lib/json-lib
+	compile group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
+
+
+
+	// https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk16 解密微信数据使用
+	compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.45'
+
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.0.0.RELEASE'
+
+	compile group: 'com.github.qcloudsms', name: 'qcloudsms', version: '1.0.5'
+
+//	compile("org.springframework.boot:spring-boot-starter-data-redis")
+
+	// https://mvnrepository.com/artifact/com.google.guava/guava
+	compile group: 'com.google.guava', name: 'guava', version: '26.0-jre'
+
+	// for dev
+	runtime('org.springframework.boot:spring-boot-devtools')
+
+    // for test
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('io.projectreactor:reactor-test')
+}
