@@ -34,7 +34,7 @@ repositories {
 
 dependencies {
 	// Modules
-	implementation project(':commons-java')
+	// implementation project(':commons-java')
 
 	// Spring Boot Framework
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
